@@ -218,8 +218,70 @@
 
   dispatcher.utter_message("Sure, please allow me to access your location 🧐",json_message=message)
   ```
+
+
   
-## PDF Files
+## Card Carousel
+- sending response from `domain.yml`
+    ```
+    responses:
+      utter_cards_carousel:
+        custom:
+          payload: cardsCarousel
+          data:
+          - image: https://b.zmtcdn.com/data/pictures/1/17428541/da50010b1a953dfbb109306fba5a6c06.jpg
+            name: abc
+            ratings: '4.0'
+            title: pqr
+          - image: https://b.zmtcdn.com/data/pictures/1/17428541/da50010b1a953dfbb109306fba5a6c06.jpg
+            name: abc
+            ratings: '4.0'
+            title: pqr
+          - image: https://b.zmtcdn.com/data/pictures/1/17428541/da50010b1a953dfbb109306fba5a6c06.jpg
+            name: abc
+            ratings: '4.0'
+            title: pqr
+          - image: https://b.zmtcdn.com/data/pictures/1/17428541/da50010b1a953dfbb109306fba5a6c06.jpg
+            name: abc
+            ratings: '4.0'
+            title: pqr
+    ```
+- sending response from custom actions `actions.py`
+    ```
+
+      data = {
+            "payload": 'cardsCarousel',
+            "data": [
+                {
+                    "image": "https://b.zmtcdn.com/data/pictures/1/18602861/bd2825ec26c21ebdc945edb7df3b0d99.jpg",
+                    "title": "Taftoon Bar & Kitchen",
+                    "ratings": "4.5",
+                },
+                {
+                    "image": "https://b.zmtcdn.com/data/pictures/4/18357374/661d0edd484343c669da600a272e2256.jpg",
+
+                    "ratings": "4.0",
+                    "title": "Veranda"
+                },
+                {
+                    "image": "https://b.zmtcdn.com/data/pictures/4/18902194/e92e2a3d4b5c6e25fd4211d06b9a909e.jpg",
+
+                    "ratings": "4.0",
+                    "title": "145 The Mill"
+                },
+                {
+                    "image": "https://b.zmtcdn.com/data/pictures/3/17871363/c53db6ba261c3e2d4db1afc47ec3eeb0.jpg",
+
+                    "ratings": "4.0",
+                    "title": "The Fatty Bao"
+                },
+            ]
+        }
+
+      dispatcher.utter_message(json_message=data)
+    ```
+
+## PDF Attachment
 - sending response from `domain.yml`
     ```
     responses:
@@ -229,4 +291,12 @@
             payload: pdf_attachment
             title: "PDF Title"
             url: "URL to PDF file"
+    ```
+- sending response from `actions.py`
+    ```
+      data = {
+        payload:"pdf_attachment",
+        title: "PDF Title",
+        url: "URL to PDF file"
+      }
     ```

@@ -559,7 +559,7 @@ div.content_data::-webkit-scrollbar {
   white-space: nowrap;
   text-overflow: ellipsis;
   width: 90%;
-  height: 40%;
+  /* height: 40%; */
   display: inline-block;
   margin-bottom: 1px;
   font-size: 15px;

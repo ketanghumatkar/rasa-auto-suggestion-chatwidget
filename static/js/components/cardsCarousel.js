@@ -4,18 +4,13 @@
  */
 function createCardsCarousel(cardsData) {
     let cards = "";
-    for (let i = 0; i < cardsData.length; i += 1) {
-        const title = cardsData[i].name;
-        const ratings = `${Math.round((cardsData[i].ratings / 5) * 100)}%`;
+    cardsData.map((card_item) => {
         const item = `<div class="carousel_cards in-left">
-    <img class="cardBackgroundImage" src="${cardsData[i].image}">
-    <div class="cardFooter"> <span class="cardTitle" title="${title}">${title}</span>
-    <div class="cardDescription"><div class="stars-outer">
-    <div class="stars-inner" style="width:${ratings}" >
-    </div></div></div></div></div>`;
-
+    <img class="cardBackgroundImage" src=${card_item.image}>
+    <div class="cardFooter"> <span class="cardTitle" title="abc">${card_item.title}</span>
+    <div class="cardDescription"></div></div></div>`;
         cards += item;
-    }
+    });
     const cardContents = `<div id="paginated_cards" class="cards"> <div class="cards_scroller">${cards} <span class="arrow prev fa fa-chevron-circle-left "></span> <span class="arrow next fa fa-chevron-circle-right" ></span> </div> </div>`;
     return cardContents;
 }
@@ -30,7 +25,7 @@ function showCardsCarousel(cardsToAdd) {
     $(cards).appendTo(".chats").show();
 
     if (cardsToAdd.length <= 2) {
-        $(`.cards_scroller>div.carousel_cards:nth-of-type(${i})`).fadeIn(3000);
+        $(`.cards_scroller>div.carousel_cards:nth-of-type(2)`).fadeIn(3000);
     } else {
         for (let i = 0; i < cardsToAdd.length; i += 1) {
             $(`.cards_scroller>div.carousel_cards:nth-of-type(${i})`).fadeIn(3000);
