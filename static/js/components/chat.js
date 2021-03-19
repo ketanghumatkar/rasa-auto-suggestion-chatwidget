@@ -167,7 +167,9 @@ function setBotResponse(response) {
             }
             scrollToBottomOfResults();
         }
+        $(".usrInput").focus();
     }, 500);
+
 }
 
 /**
