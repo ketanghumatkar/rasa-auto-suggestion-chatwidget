@@ -68,7 +68,7 @@
 
 - sending response from custom actions `actions.py` 
     ```
-    msg = { "type": "video", "payload": { "title": "Link name", "src": "https://youtube.com/9C1Km6xfdMA" } }
+    msg = { "type": "video", "payload": { "title": "Link name", "src": "https://youtube.com/embed/9C1Km6xfdMA" } }
 
     dispatcher.utter_message(text="Check this video",attachment=msg)
     ```   

@@ -659,7 +659,7 @@ div.content_data::-webkit-scrollbar {
   position: relative;
   margin: auto;
   height: 25vh;
-  width: 20vw;
+  width: 90%;
   border-radius: 10px 10px 10px 10px;
   margin-left: 5%;
   background: white;
