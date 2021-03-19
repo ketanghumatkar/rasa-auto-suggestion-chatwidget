@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 4000);
 });
 
-
+/* import components */
 include('./static/js/components/index.js');
 
 window.addEventListener('load', () => {
@@ -65,7 +65,3 @@ window.addEventListener('load', () => {
     scrollToBottomOfResults();
   });
 });
-
-
-
-
