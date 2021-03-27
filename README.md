@@ -53,6 +53,7 @@ Below are the sample bot projects that were developed using Rasa and made to wor
 
 ## Library used:
 - [Materialize CSS](https://materializecss.com) for CSS
+- [showdownjs](https://github.com/showdownjs/showdown) for Markdown suppport
 - [Chart.js](https://www.chartjs.org/) for Charts
 
 ## Demo:
