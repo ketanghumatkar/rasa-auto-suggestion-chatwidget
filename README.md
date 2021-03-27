@@ -21,7 +21,7 @@
 ## Features
 
 - Text 
-- Markdown support
+- Markdown
 - Buttons
 - Images
 - Video 
