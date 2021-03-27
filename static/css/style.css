@@ -81,21 +81,21 @@ div.chats::-webkit-scrollbar {
   border-radius: 5px 20px 20px 20px;
 }
 
-pre {
+div.chats > pre {
   font-family: monospace, monospace;
   font-size: 1em;
   margin: 0 !important;
   /* display: inline !important; */
   white-space: initial !important;
 }
-ul:not(.browser-default) {
+div.chats > ul:not(.browser-default) {
   padding-left: 1em;
 }
-ul:not(.browser-default) > li {
+div.chats > ul:not(.browser-default) > li {
   list-style-type: initial;
 }
 
-span.botMsg > ol {
+div.chats > span.botMsg > ol {
   padding-left: 1em;
 }
 textarea {
