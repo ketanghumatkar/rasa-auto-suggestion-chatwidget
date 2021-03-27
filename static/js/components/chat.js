@@ -1,6 +1,7 @@
 /**
  * scroll to the bottom of the chats after new message has been added to chat
  */
+const converter = new showdown.Converter();
 function scrollToBottomOfResults() {
     const terminalResultsDiv = document.getElementById("chats");
     terminalResultsDiv.scrollTop = terminalResultsDiv.scrollHeight;
@@ -19,6 +20,17 @@ function setUserResponse(message) {
     scrollToBottomOfResults();
     showBotTyping();
     $(".suggestions").remove();
+}
+
+
+/**
+ * returns formatted bot response 
+ * @param {String} text bot message response's text
+ *
+ */
+function getBotResponse(text) {
+    botResponse = `<img class="botAvatar" src="./static/img/sara_avatar.png"/><span class="botMsg">${text}</span><div class="clearfix"></div>`;
+    return botResponse;
 }
 
 /**
@@ -45,8 +57,40 @@ function setBotResponse(response) {
                 // check if the response contains "text"
                 if (Object.hasOwnProperty.call(response[i], "text")) {
                     if (response[i].text != null) {
-                        const BotResponse = `<img class="botAvatar" src="./static/img/sara_avatar.png"/><p class="botMsg">${response[i].text.replace(/(?:\r\n|\r|\n)/g, '<br>')}</p><div class="clearfix"></div>`;
-                        $(BotResponse).appendTo(".chats").hide().fadeIn(1000);
+                        // convert the text to mardown format using showdown.js(https://github.com/showdownjs/showdown);
+                        let botResponse;
+                        let html = converter.makeHtml(response[i].text);
+                        html = html.replaceAll("<p>", "").replaceAll("</p>", "").replaceAll("<strong>", "<b>").replaceAll("</strong>", "</b>");
+                        html = html.replace(/(?:\r\n|\r|\n)/g, '<br>')
+
+                        // check for blockquotes
+                        if (html.includes("<blockquote>")) {
+                            html = html.replaceAll("<br>", "");
+                            botResponse = getBotResponse(html);
+                        }
+                        // check for image
+                        if (html.includes("<img")) {
+                            html = html.replaceAll("<img", '<img class="imgcard_mrkdwn" ');
+                            botResponse = getBotResponse(html);
+                        }
+                        // check for preformatted text
+                        if (html.includes("<pre") || html.includes("<code>")) {
+                            console.log(html)
+                            botResponse = getBotResponse(html);
+                        }
+                        // check for list text
+                        if (html.includes("<ul") || html.includes("<ol")) {
+                            html = html.replaceAll("<br>", "");
+                            botResponse = `<img class="botAvatar" src="./static/img/sara_avatar.png"/><span class="botMsg">${html}</span><div class="clearfix"></div>`;
+                        }
+                        else {
+                            // if no markdown formatting found, render the text as it is.
+                            if (!botResponse) {
+                                botResponse = `<img class="botAvatar" src="./static/img/sara_avatar.png"/><p class="botMsg">${response[i].text}</p><div class="clearfix"></div>`;
+                            }
+                        }
+                        // append the bot response on to the chat screen
+                        $(botResponse).appendTo(".chats").hide().fadeIn(1000);
                     }
                 }
 
