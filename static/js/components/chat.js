@@ -75,7 +75,7 @@ function setBotResponse(response) {
                         }
                         // check for preformatted text
                         if (html.includes("<pre") || html.includes("<code>")) {
-                            console.log(html)
+
                             botResponse = getBotResponse(html);
                         }
                         // check for list text
