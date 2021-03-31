@@ -79,9 +79,10 @@ function setBotResponse(response) {
                             botResponse = getBotResponse(html);
                         }
                         // check for list text
-                        if (html.includes("<ul") || html.includes("<ol") || html.includes("<li")) {
+                        if (html.includes("<ul") || html.includes("<ol") || html.includes("<li") || html.includes('<h3')) {
                             html = html.replaceAll("<br>", "");
-                            botResponse = `<img class="botAvatar" src="./static/img/sara_avatar.png"/><span class="botMsg">${html}</span><div class="clearfix"></div>`;
+                            // botResponse = `<img class="botAvatar" src="./static/img/sara_avatar.png"/><span class="botMsg">${html}</span><div class="clearfix"></div>`;
+                            botResponse = getBotResponse(html);
                         }
                         else {
                             // if no markdown formatting found, render the text as it is.
