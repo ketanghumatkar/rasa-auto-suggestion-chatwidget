@@ -62,7 +62,7 @@ function setBotResponse(response) {
                         let html = converter.makeHtml(response[i].text);
                         html = html.replaceAll("<p>", "").replaceAll("</p>", "").replaceAll("<strong>", "<b>").replaceAll("</strong>", "</b>");
                         html = html.replace(/(?:\r\n|\r|\n)/g, '<br>')
-
+                        console.log(html);
                         // check for blockquotes
                         if (html.includes("<blockquote>")) {
                             html = html.replaceAll("<br>", "");
@@ -79,7 +79,7 @@ function setBotResponse(response) {
                             botResponse = getBotResponse(html);
                         }
                         // check for list text
-                        if (html.includes("<ul") || html.includes("<ol")) {
+                        if (html.includes("<ul") || html.includes("<ol") || html.includes("<li")) {
                             html = html.replaceAll("<br>", "");
                             botResponse = `<img class="botAvatar" src="./static/img/sara_avatar.png"/><span class="botMsg">${html}</span><div class="clearfix"></div>`;
                         }
