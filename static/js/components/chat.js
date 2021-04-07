@@ -16,7 +16,7 @@ function setUserResponse(message) {
     const user_response = `<img class="userAvatar" src='./static/img/userAvatar.jpg'><p class="userMsg">${message} </p><div class="clearfix"></div>`;
     $(user_response).appendTo(".chats").show("slow");
 
-    $(".usrInput").val("");
+    $("#userInput").val("");
     scrollToBottomOfResults();
     showBotTyping();
     $(".suggestions").remove();
@@ -24,7 +24,7 @@ function setUserResponse(message) {
 
 
 /**
- * returns formatted bot response 
+ * returns formatted bot response
  * @param {String} text bot message response's text
  *
  */
@@ -212,7 +212,7 @@ function setBotResponse(response) {
             }
             scrollToBottomOfResults();
         }
-        $(".usrInput").focus();
+        $("#userInput").focus();
     }, 500);
 
 }
@@ -346,7 +346,7 @@ function restartConversation() {
         modalChart.destroy();
     }
     $(".chats").html("");
-    $(".usrInput").val("");
+    $("#userInput").val("");
     send("/restart");
 }
 // triggers restartConversation function.
@@ -357,10 +357,10 @@ $("#restart").click(() => {
 /**
  * if user hits enter or send button
  * */
-$(".usrInput").on("keyup keypress", (e) => {
+$("#userInput").on("keyup keypress", (e) => {
     const keyCode = e.keyCode || e.which;
 
-    const text = $(".usrInput").val();
+    const text = $("#userInput").val();
     if (keyCode === 13) {
         if (text === "" || $.trim(text) === "") {
             e.preventDefault();
@@ -381,7 +381,7 @@ $(".usrInput").on("keyup keypress", (e) => {
         $("#paginated_cards").remove();
         $(".suggestions").remove();
         $(".quickReplies").remove();
-        $(".usrInput").blur();
+        $("#userInput").blur();
         setUserResponse(text);
         send(text);
         e.preventDefault();
@@ -390,8 +390,18 @@ $(".usrInput").on("keyup keypress", (e) => {
     return true;
 });
 
+// $(document).ready(function () {
+    $('input.autocomplete').autocomplete({
+        data: {
+            "Apple": null,
+            "Microsoft": null,
+            "Google": null
+        },
+    });
+// });
+
 $("#sendButton").on("click", (e) => {
-    const text = $(".usrInput").val();
+    const text = $("#userInput").val();
     if (text === "" || $.trim(text) === "") {
         e.preventDefault();
         return false;
@@ -409,7 +419,7 @@ $("#sendButton").on("click", (e) => {
     $(".suggestions").remove();
     $("#paginated_cards").remove();
     $(".quickReplies").remove();
-    $(".usrInput").blur();
+    $("#userInput").blur();
     $(".dropDownMsg").remove();
     setUserResponse(text);
     send(text);

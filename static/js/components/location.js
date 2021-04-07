@@ -37,7 +37,7 @@ function handleLocationAccessError(error) {
     // eslint-disable-next-line no-use-before-define
     send(response);
     showBotTyping();
-    $(".usrInput").val("");
+    $("#userInput").val("");
     $("#userInput").prop("disabled", false);
 }
 

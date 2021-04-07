@@ -153,13 +153,18 @@ blockquote {
   /* border: 2px solid  #060DCF ; */
 }
 
-.usrInput {
-  padding: 0.5em;
+#userInput {
   width: 80%;
   margin-left: 4%;
   border: 0;
   padding-left: 15px;
   height: 40px;
+}
+
+.userInputWrap{
+  margin-top: 0;
+  margin-bottom: 0;
+  float: left;
 }
 
 .keypad {

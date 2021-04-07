@@ -54,5 +54,5 @@ function showCardsCarousel(cardsToAdd) {
 
     card.querySelector(".arrow.next").addEventListener("click", scrollToNextPage);
     card.querySelector(".arrow.prev").addEventListener("click", scrollToPrevPage);
-    $(".usrInput").focus();
+    $("#userInput").focus();
 }
