@@ -390,15 +390,26 @@ $("#userInput").on("keyup keypress", (e) => {
     return true;
 });
 
-// $(document).ready(function () {
-    $('input.autocomplete').autocomplete({
-        data: {
-            "Apple": null,
-            "Microsoft": null,
-            "Google": null
+$(document).ready(function () {
+
+
+    $("#userInput").devbridgeAutocomplete({
+        serviceUrl: rasa_auto_suggestion, //tell the script where to send requests
+        type: 'GET',
+
+
+        //callback just to show it's working
+        onSelect: function (suggestion) {
+            console.log('You selected: ' + suggestion.value + ', ' + suggestion.data);
+            // $('#selection').html('You selected: ' + suggestion.value + ', ' + suggestion.data);
         },
+        showNoSuggestionNotice: true,
+        noSuggestionNotice: 'Sorry, no matching results',
+
+
     });
-// });
+
+});
 
 $("#sendButton").on("click", (e) => {
     const text = $("#userInput").val();
