@@ -154,7 +154,6 @@ blockquote {
 }
 
 #userInput {
-  width: 80%;
   margin-left: 4%;
   border: 0;
   padding-left: 15px;
@@ -165,6 +164,7 @@ blockquote {
   margin-top: 0;
   margin-bottom: 0;
   float: left;
+  width: 80%;
 }
 
 .keypad {
@@ -863,4 +863,36 @@ video:focus {
 
 .pdf_link a {
   color: #060dcfc7;
+}
+
+/* css for auto suggestion for user query */
+
+.autocomplete-suggestions {
+  border: 1px solid #999;
+  background: #FFF;
+  overflow: auto;
+}
+
+.autocomplete-suggestion {
+  padding: 2px 5px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.autocomplete-selected {
+  background: #F0F0F0;
+}
+
+.autocomplete-suggestions strong {
+  font-weight: normal;
+  color: #3399FF;
+}
+
+.autocomplete-group {
+  padding: 2px 5px;
+}
+
+.autocomplete-group strong {
+  display: block;
+  border-bottom: 1px solid #000;
 }
