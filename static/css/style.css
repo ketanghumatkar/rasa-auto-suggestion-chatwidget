@@ -33,6 +33,13 @@ body {
   margin-left: 35%;
 }
 
+#close {
+  float: right;
+  color: white;
+  margin-top: 3%;
+  margin-right: 10px;
+}
+
 .chats {
   /* display: none; */
   height: 385px;
