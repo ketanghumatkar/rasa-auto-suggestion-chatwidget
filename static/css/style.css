@@ -1,7 +1,7 @@
 body {
   font-family: "Open Sans", sans-serif;
   background: url("../img/body.png") no-repeat center center fixed;
-  background-size: cover;
+  background-size: 100% 100%;
 }
 
 /* ============= css related to chats =============== */
